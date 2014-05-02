@@ -1,2 +1,6 @@
 source 'http://rubygems.org'
 gem 'neography'
+gem 'nokogiri'
+gem 'addressable'
+gem 'open_uri_redirections'
+gem 'rspec'
