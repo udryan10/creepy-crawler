@@ -1,6 +1,10 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'neography'
+require 'nokogiri'
+require 'open-uri'
+require 'addressable/uri'
+require 'open_uri_redirections'
 
 # dynamically require all creepy-crawler/*.rb
 Dir[File.dirname(__FILE__) + '/creepy-crawler/*.rb'].each {|file| require file }
