@@ -1,9 +1,18 @@
 module Creepycrawler
-
-
   class Site 
 
-    attr_reader :domain,:scheme,:url,:options,:crawl_queue, :page_crawl_count
+    # the site domain
+    attr_reader :domain
+    # site scheme (http/https) 
+    attr_reader:scheme
+    # url the crawl began with
+    attr_reader :url
+    # hash of additional options to be passed in
+    attr_reader :options
+    # queue used to store discovered pages and crawl the site
+    attr_reader :crawl_queue
+    # number of pages crawled
+    attr_reader :page_crawl_count
 
     def initialize(url, options = {})
       response = open(url, :allow_redirections => :all)
