@@ -32,10 +32,16 @@ module Creepycrawler
         break if @crawl_queue.empty? or (!options[:max_page_crawl].nil? and @page_crawl_count >= options[:max_page_crawl])
         url = @crawl_queue.shift
         page = Page.new(url)
-        # push each link onto our queue. todo: filter non-local and already visisted sites
+        add_page_to_graph(page.url,true)
+        # push each link onto our queue. todo: filter already visisted sites
         page.links.each do |link| 
           # we only want to crawl current domain, so only push local links
           crawl_queue.push(link) if local?(link)
+
+          # add the linked to page to our graph
+          add_page_to_graph(page.url,false)
+          # create relationship from current
+          create_relationship_in_graph(page.url,link)
         end
         @page_crawl_count += 1
       end
@@ -49,8 +55,9 @@ module Creepycrawler
       return false
     end
 
-    def add_page_to_graph(page)
+    def add_page_to_graph(page,visited)
       # if page doesnt exist, add it to neo4j
+      # if it exists and visited is false and passed in variable is true, update visited
     end
 
     def create_relationship_in_graph(from, to)
