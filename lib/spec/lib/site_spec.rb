@@ -8,18 +8,17 @@ module Creepycrawler
   
     describe "#new" do
       it "should accept a url and return a site object" do
-        @site.should be_an_instance_of Site
+        expect(@site).to be_an_instance_of Creepycrawler::Site
       end 
     end
 
     describe "#local?" do
-
       it "should corectly recognize a url local" do
-        @site.local?(RSPEC_URL).should be_true 
+        expect(@site.local?("#{RSPEC_URL}/foo")).to be true
       end
 
       it "should correctly recognize a non-local url" do
-        @site.local?("http://non-local.com/").should be_false 
+        expect(@site.local?("http://non-local.com/")).to be false 
       end
     end
   end
