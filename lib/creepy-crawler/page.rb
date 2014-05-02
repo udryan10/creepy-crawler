@@ -1,12 +1,6 @@
-require 'nokogiri'
-require 'open-uri'
-require 'addressable/uri'
-require 'open_uri_redirections'
-
 module Creepycrawler
   class Page
-    attr_reader :body
-    attr_accessor :url
+    attr_accessor :url,:body
 
     def initialize(url)
       # todo: validate a url was passed in
@@ -22,7 +16,7 @@ module Creepycrawler
 
     def links
       # if we haven't fetched the page, get it
-      fetch if @links.nil?
+      fetch if @body.nil?
       
       # using nokogiri, find all anchor elements
       hyperlinks = @body.css('a')
