@@ -3,10 +3,8 @@ module Creepycrawler
     attr_accessor :url,:body
 
     def initialize(url)
-      # todo: validate a url was passed in
-      # fetch site and set url if successful. Handles redirects
-      response = open(url, :allow_redirections => :all)
-      @url = Addressable::URI.parse(response.base_uri)
+      @url = Addressable::URI.parse(url).normalize
+      @robotstxt = WebRobots.new "CreepyCrawler"
     end
 
     # retrieve page
@@ -21,7 +19,7 @@ module Creepycrawler
       # using nokogiri, find all anchor elements
       hyperlinks = @body.css('a')
       
-      # get array of links on page - remove any empty links
+      # get array of links on page - remove any empty links and convert relative to absolute
       @links = hyperlinks.map {|link| link.attribute('href').to_s}.uniq.sort.delete_if{|href| href.empty? or href == "#"}.map{|link| relative_to_absolute_link(link)}
     end
 
@@ -29,10 +27,15 @@ module Creepycrawler
       uri = Addressable::URI.parse(link).normalize
       # this url was relative, prepend our known domain
       if uri.host.nil? 
-        return "#{@url}#{link.gsub(/^\//,'')}"
+        # take base site and current link path to get absolute
+        return "#{@url.site}#{uri.path}"
       else
         return link 
       end
+    end
+
+    def robots_disallowed?
+      return @robotstxt.disallowed? @url 
     end
 
   end 
