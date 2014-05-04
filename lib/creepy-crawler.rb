@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'addressable/uri'
 require 'open_uri_redirections'
+require 'webrobots'
 
 # dynamically require all creepy-crawler/*.rb
 Dir[File.dirname(__FILE__) + '/creepy-crawler/*.rb'].each {|file| require file }
@@ -32,6 +33,7 @@ module Creepycrawler
  
   # class method to start a crawl
   def Creepycrawler.crawl(url, options = {})
-    return Site.new(url, options).crawl
+    site =  Site.new(url, options).crawl
+    return site
   end
 end
