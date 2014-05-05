@@ -12,7 +12,7 @@ module Creepycrawler
       end 
 
       it "should raise error on bad url" do
-        expect { Page.new("http://bad_url") }.to raise_error
+        expect { Page.new("http://?bad_uri") }.to raise_error
       end
     end
 
