@@ -33,7 +33,6 @@ module Creepycrawler
  
   # class method to start a crawl
   def Creepycrawler.crawl(url, options = {})
-    site =  Site.new(url, options).crawl
-    return site
+    return Site.new(url, options).crawl
   end
 end
