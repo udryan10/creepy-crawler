@@ -29,18 +29,20 @@ module Creepycrawler
           "/2",
           "http://remote.com/3"
         ]
-        @page.body = Nokogiri::HTML(Dummypage.new(dummy_page_link_array).body)
+        @page.body = Dummypage.new(dummy_page_link_array).body
         expect(@page.links).to be_an(Array)
       end
+
       it "should return three links" do
         dummy_page_link_array = [
           "/1",
           "/2",
           "http://remote.com/3"
         ]
-        @page.body = Nokogiri::HTML(Dummypage.new(dummy_page_link_array).body)
+        @page.body = Dummypage.new(dummy_page_link_array).body
         expect(@page.links.length).to equal(3)
       end
+
       it "should not return links to itself or empty links" do
         dummy_page_link_array = [
           "/1",
@@ -49,17 +51,42 @@ module Creepycrawler
           "#",
           "" 
         ]
-        @page.body = Nokogiri::HTML(Dummypage.new(dummy_page_link_array).body)
+        @page.body = Dummypage.new(dummy_page_link_array).body
         expect(@page.links.length).to equal(3)
       end
+
       it "should convert relative to absolute links" do
         dummy_page_link_array = [
           "/1",
           "/2",
           "http://remote.com/3"
         ]
-        @page.body = Nokogiri::HTML(Dummypage.new(dummy_page_link_array).body)
+        @page.body = Dummypage.new(dummy_page_link_array).body
         expect(@page.links).to include("#{RSPEC_URL}1", "#{RSPEC_URL}2", "http://remote.com/3")
+      end
+
+      it "should not pickup mailto links" do
+        dummy_page_link_array = [
+          "mailto:foo@example.com"
+        ]
+        @page.body = Dummypage.new(dummy_page_link_array).body
+        expect(@page.links).to be_empty
+      end
+
+      it "should not pickup ftp links" do
+        dummy_page_link_array = [
+          "ftp://example.com"
+        ]
+        @page.body = Dummypage.new(dummy_page_link_array).body
+        expect(@page.links).to be_empty
+      end
+
+      it "should not pickup links that execute javascript" do
+        dummy_page_link_array = [
+          "javascript:void(0)"
+        ]
+        @page.body = Dummypage.new(dummy_page_link_array).body
+        expect(@page.links).to be_empty
       end
     end
   end
