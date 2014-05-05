@@ -39,4 +39,5 @@ DEPENDENCIES
   nokogiri
   open_uri_redirections
   rspec
+  rspec-core
   webrobots
