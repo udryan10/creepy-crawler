@@ -11,7 +11,7 @@ module Creepycrawler
       # if page doesnt exist, add it to neo4j
       begin
         node = @neo4j.get_node_index("page", "url", url)
-      rescue Neography::NotFoundException => error
+      rescue Neography::NotFoundException => e
         node = nil
       end
 
@@ -25,7 +25,7 @@ module Creepycrawler
     end
 
     def create_relationship(type,from,to)
-      @neo4j.create_relationship(type,from,to)
+      @neo4j.create_relationship(type, from, to)
     end
   end 
 end
