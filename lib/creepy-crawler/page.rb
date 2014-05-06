@@ -54,9 +54,7 @@ module Creepycrawler
 
       # this url was relative, prepend our known domain
       if uri.host.nil?
-        # take page base site and add to relative link to get absolute
-        uri.site = @url.site
-        return uri.to_s
+        return (@url + uri.path).to_s
       else
         # the url was already absolute - leave as is
         return uri.to_s
