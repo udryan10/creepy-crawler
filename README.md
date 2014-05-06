@@ -68,3 +68,7 @@ neo4j also has a full-on [REST API](http://docs.neo4j.org/chunked/stable/rest-ap
 
 ###Example Output Map
 ![Output Map](https://raw.githubusercontent.com/udryan10/creepy-crawler/master/examples/output_map.png)
+
+##TODO
+1. convert to gem
+2. multi-threaded to increase crawl performance
