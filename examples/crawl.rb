@@ -1,4 +1,4 @@
-require '../lib/creepy-crawler'
+require_relative '../lib/creepy-crawler'
 
 crawler = Creepycrawler.crawl("http://yahoo.com", :max_page_crawl => 100)
 puts "=" * 40
