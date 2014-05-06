@@ -44,7 +44,7 @@ end
 if __FILE__==$0
   # setup options
   opts = Trollop::options do
-    opt :site, "url of site to crawl", :type => :string  # flag --site
+    opt :site, "Url of site to crawl", :type => :string  # flag --site
     opt :obey_robots, "Obey robots.txt disallow list"    # string --name <s>, default nil
     opt :verbose, "Whether to print crawling information", :default => true
     opt :max_page_crawl, "Maximum number of pages to crawl. Defaults to unlimited", :default => 0 
