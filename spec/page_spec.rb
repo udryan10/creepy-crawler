@@ -59,10 +59,12 @@ module Creepycrawler
         dummy_page_link_array = [
           "/1",
           "/2",
+          "3/4",
+          "foo.html",
           "http://remote.com/3"
         ]
         @page.body = Dummypage.new(dummy_page_link_array).body
-        expect(@page.links).to include("#{RSPEC_URL}1", "#{RSPEC_URL}2", "http://remote.com/3")
+        expect(@page.links).to match_array(["#{RSPEC_URL}1", "#{RSPEC_URL}2", "http://remote.com/3", "#{RSPEC_URL}3/4", "#{RSPEC_URL}foo.html"])
       end
 
       it "should not pickup mailto links" do
