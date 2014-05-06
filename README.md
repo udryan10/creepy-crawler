@@ -63,3 +63,5 @@ neo4j has a web interface for viewing and interacting with the graph data. When 
 4. Click switch view mode to view a graphical map
 
 neo4j also has a full-on [REST API](http://docs.neo4j.org/chunked/stable/rest-api.html) for programatic access to the data
+
+##Example Output Map
