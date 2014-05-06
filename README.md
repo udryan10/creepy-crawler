@@ -42,8 +42,12 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
       # should pages be written to the database. Likely only used for testing, but may be used if you only wanted to get at the broken_links data
       :graph_to_neo4j => true
     }
+**Note:** If behind a proxy, export your proxy environment variables
+   
+    export http_proxy=<prox_host>; export https_proxy=http_proxy=<prox_host>
 
-####Example script located in examples/
+####Example 
+examples located in <code>examples/</code> directory
 
 ##Output
 creepy-crawler uses [neo4j](http://www.neo4j.org/) graph database to store and display the site map.
