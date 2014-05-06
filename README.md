@@ -19,6 +19,7 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
 ####Requirements
 1. Gems listed in Gemfile
 2. Ruby 1.9+
+3. neo4j
 3. Oracle jdk7 (for neo4j graphing database)
 
 ##Usage
