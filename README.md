@@ -21,7 +21,7 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
     require './creepy-crawler'
 ####Start a crawl
     Creepycrawler.crawl("http://example.com")
-####Limit number of pages in crawl
+####Limit number of pages to crawl
     Creepycrawler.crawl("http://example.com", :max_page_crawl => 500)
 ####Extract some (potentially) useful statistics
     crawler = Creepycrawler.crawl("http://example.com", :max_page_crawl => 500)
