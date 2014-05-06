@@ -83,7 +83,7 @@ neo4j has a web interface for viewing and interacting with the graph data. When 
 
 **Note:** to have the map display url names instead of node numbers, you must create a style
 ### REST interface
-neo4j also has a full-on [REST API](http://docs.neo4j.org/chunked/stable/rest-api.html) for programatic access to the data
+neo4j also has a full [REST API](http://docs.neo4j.org/chunked/stable/rest-api.html) for programatic access to the data
 
 ###Example Output Map
 ![Output Map](https://raw.githubusercontent.com/udryan10/creepy-crawler/master/examples/output_map.png)
