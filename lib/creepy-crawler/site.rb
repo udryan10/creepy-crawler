@@ -26,7 +26,7 @@ module Creepycrawler
       :obey_robots => true,
       # maximum number of pages to crawl, value of nil will attempt to crawl all pages
       :max_page_crawl => nil,
-      # should pages be written to the database. Probably used for testing, but may be used if you only wanted to get at the broken_links data
+      # should pages be written to the database. Likely only used for testing, but may be used if you only wanted to get at the broken_links data
       :graph_to_neo4j => true
     }
 
@@ -77,27 +77,27 @@ module Creepycrawler
           
           # retrieve page
           page.fetch
-        rescue  => e
+        
+          current_page_node = @graph.add_page(page.url) if @options[:graph_to_neo4j] 
+          #todo: fix this. on first run current_page_node is a hash. subsequent is an array of hashes
+          @root_node = current_page_node if @page_crawl_count == 0 and @options[:graph_to_neo4j]
+          
+          # Loop through all links on the current page
+          page.links.each do |link|
+
+            # add to crawl queue - only push local links, links that do not yet exist in the queue and links that haven't been visted
+            @crawl_queue.push(link) if local? link and !@crawl_queue.include? link and !@visited_queue.include? link.to_s
+
+            # add link page to graph
+            current_link_node = @graph.add_page(link) if @options[:graph_to_neo4j]
+
+            # create a links_to relationship from the current page node to link node
+            @graph.create_relationship("links_to", current_page_node, current_link_node) if @options[:graph_to_neo4j]
+          end
+        rescue => e
           puts "Exception thrown: #{e.message} - Skipping Page" if @options[:verbose]
           @broken_links.push(page.url)
           next
-        end
-
-        current_page_node = @graph.add_page(page.url) if @options[:graph_to_neo4j] 
-        #todo: fix this. on first run current_page_node is a hash. subsequent is an array of hashes
-        @root_node = current_page_node if @page_crawl_count == 0 and @options[:graph_to_neo4j]
-        
-        # Loop through all links on the current page
-        page.links.each do |link|
-
-          # add to crawl queue - only push local links, links that do not yet exist in the queue and links that haven't been visted
-          @crawl_queue.push(link) if local? link and !@crawl_queue.include? link and !@visited_queue.include? link.to_s
-
-          # add link page to graph
-          current_link_node = @graph.add_page(link) if @options[:graph_to_neo4j]
-
-          # create a links_to relationship from the current page node to link node
-          @graph.create_relationship("links_to", current_page_node, current_link_node) if @options[:graph_to_neo4j]
         end
         @page_crawl_count += 1
       end # end of loop
