@@ -23,6 +23,7 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
 3. Oracle jdk7 (for neo4j graphing database)
 
 ##Usage
+###Code
 ####Require
     require './creepy-crawler'
 ####Start a crawl
@@ -38,9 +39,10 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
     # count of crawled pages
     puts crawler.page_crawl_count
 ###Command line
-   ruby creepy-crawler.rb --site "http://google.com"
-   
-   ruby creepy-crawler.rb --help
+    # Crawl site
+    ruby creepy-crawler.rb --site "http://google.com"
+    # Get command options
+    ruby creepy-crawler.rb --help
 ####Options
     DEFAULT_OPTIONS = {
       # whether to print crawling information
