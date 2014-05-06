@@ -52,7 +52,7 @@ creepy-crawler uses [neo4j](http://www.neo4j.org/) graph database to store and d
 neo4j has a web interface for viewing and interacting with the graph data. When running on local host, visit: [http://localhost:7474/webadmin/](http://localhost:7474/webadmin/)
 
 1. Click the Data Browser tab
-2. Enter Query to search for nodes ex (will search all nodes):
+2. Enter Query to search for nodes (will search all nodes):
 
     <code>
     START root=node(*) 
@@ -60,7 +60,7 @@ neo4j has a web interface for viewing and interacting with the graph data. When 
     </code>
     
 3. Click into a node
-4. Click switch view mode to view a graphical map
+4. Click switch view mode at top right to view a graphical map
 
 neo4j also has a full-on [REST API](http://docs.neo4j.org/chunked/stable/rest-api.html) for programatic access to the data
 
