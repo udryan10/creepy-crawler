@@ -21,7 +21,7 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
     require './creepy-crawler'
 ####Start a crawl
     Creepycrawler.crawl("http://example.com")
-####Limit number of pages in crawl
+####Limit number of pages to crawl
     Creepycrawler.crawl("http://example.com", :max_page_crawl => 500)
 ####Extract some (potentially) useful statistics
     crawler = Creepycrawler.crawl("http://example.com", :max_page_crawl => 500)
@@ -42,8 +42,12 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
       # should pages be written to the database. Likely only used for testing, but may be used if you only wanted to get at the broken_links data
       :graph_to_neo4j => true
     }
+**Note:** If behind a proxy, export your proxy environment variables
+   
+    export http_proxy=<prox_host>; export https_proxy=http_proxy=<prox_host>
 
-####Example script located in examples/
+####Example 
+examples located in <code>examples/</code> directory
 
 ##Output
 creepy-crawler uses [neo4j](http://www.neo4j.org/) graph database to store and display the site map.
@@ -52,7 +56,7 @@ creepy-crawler uses [neo4j](http://www.neo4j.org/) graph database to store and d
 neo4j has a web interface for viewing and interacting with the graph data. When running on local host, visit: [http://localhost:7474/webadmin/](http://localhost:7474/webadmin/)
 
 1. Click the Data Browser tab
-2. Enter Query to search for nodes ex (will search all nodes):
+2. Enter Query to search for nodes (will search all nodes):
 
     <code>
     START root=node(*) 
@@ -60,6 +64,15 @@ neo4j has a web interface for viewing and interacting with the graph data. When 
     </code>
     
 3. Click into a node
-4. Click switch view mode to view a graphical map
+4. Click switch view mode at top right to view a graphical map
 
+**Note:** to have the map display url names instead of node numbers, you must create a style
+### REST interface
 neo4j also has a full-on [REST API](http://docs.neo4j.org/chunked/stable/rest-api.html) for programatic access to the data
+
+###Example Output Map
+![Output Map](https://raw.githubusercontent.com/udryan10/creepy-crawler/master/examples/output_map.png)
+
+##TODO
+1. convert to gem
+2. multi-threaded to increase crawl performance
