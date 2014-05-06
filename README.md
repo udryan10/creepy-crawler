@@ -47,3 +47,19 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
 
 ##Output
 creepy-crawler uses [neo4j](http://www.neo4j.org/) graph database to store and display the site map.
+
+### Web interface
+neo4j has a web interface for viewing and interacting with the graph data. When running on local host, visit: [http://localhost:7474/webadmin/](http://localhost:7474/webadmin/)
+
+1. Click the Data Browser tab
+2. Enter Query to search for nodes ex (will search all nodes):
+
+    <code>
+    START root=node(*) 
+    RETURN root
+    </code>
+    
+3. Click into a node
+4. Click switch view mode to view a graphical map
+
+neo4j also has a full-on [REST API](http://docs.neo4j.org/chunked/stable/rest-api.html) for programatic access to the data
