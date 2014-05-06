@@ -11,7 +11,8 @@ require 'webrobots'
 Dir[File.dirname(__FILE__) + '/creepy-crawler/*.rb'].each {|file| require file }
 
 module Creepycrawler
-  # todo: don't need this
+  # todo: on my local machine im hitting some openssl bug to where legitimate https sites are not validating the certificate.
+  # For now, keeping this to override the verification but need to investigate further and remove this hack.
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   # configure Neography - for now uses all defaults and expects neo4j to be running on localhost 
   Neography.configure do |config|
