@@ -62,6 +62,8 @@ neo4j has a web interface for viewing and interacting with the graph data. When 
 3. Click into a node
 4. Click switch view mode at top right to view a graphical map
 
+**Note:** to have the map display url names instead of node numbers, you must create a style
+### REST interface
 neo4j also has a full-on [REST API](http://docs.neo4j.org/chunked/stable/rest-api.html) for programatic access to the data
 
 ###Example Output Map
