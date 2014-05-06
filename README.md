@@ -37,6 +37,10 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
     puts crawler.visited_queue
     # count of crawled pages
     puts crawler.page_crawl_count
+###Command line
+   ruby creepy-crawler.rb --site "http://google.com"
+   
+   ruby creepy-crawler.rb --help
 ####Options
     DEFAULT_OPTIONS = {
       # whether to print crawling information
