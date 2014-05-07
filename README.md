@@ -23,6 +23,7 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
 3. Oracle jdk7 (for neo4j graphing database)
 
 ##Usage
+###Code
 ####Require
     require './creepy-crawler'
 ####Start a crawl
@@ -37,6 +38,7 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
     puts crawler.visited_queue
     # count of crawled pages
     puts crawler.page_crawl_count
+    
 ####Options
     DEFAULT_OPTIONS = {
       # whether to print crawling information
@@ -48,12 +50,19 @@ Webcrawler that takes a url as input and will output a sitemap using neo4j graph
       # should pages be written to the database. Likely only used for testing, but may be used if you only wanted to get at the broken_links data
       :graph_to_neo4j => true
     }
+    
+####Example 
+examples located in <code>examples/</code> directory
+
+###Command line
+    # Crawl site
+    ruby creepy-crawler.rb --site "http://google.com"
+    # Get command options
+    ruby creepy-crawler.rb --help
+
 **Note:** If behind a proxy, export your proxy environment variables
    
     export http_proxy=<prox_host>; export https_proxy=http_proxy=<prox_host>
-
-####Example 
-examples located in <code>examples/</code> directory
 
 ##Output
 creepy-crawler uses [neo4j](http://www.neo4j.org/) graph database to store and display the site map.
@@ -74,7 +83,7 @@ neo4j has a web interface for viewing and interacting with the graph data. When 
 
 **Note:** to have the map display url names instead of node numbers, you must create a style
 ### REST interface
-neo4j also has a full-on [REST API](http://docs.neo4j.org/chunked/stable/rest-api.html) for programatic access to the data
+neo4j also has a full [REST API](http://docs.neo4j.org/chunked/stable/rest-api.html) for programatic access to the data
 
 ###Example Output Map
 ![Output Map](https://raw.githubusercontent.com/udryan10/creepy-crawler/master/examples/output_map.png)
