@@ -14,7 +14,7 @@ I have containerized creepy-crawler using [Docker](http://docker.io) for testing
     docker run -i -p 7474:7474 creepy-crawler:1.0
 
 ##Output
-creepy-crawler uses neo4j graph database to store and display the site map. When the crawl is complete, the docker container is set to loop indefinitley to provide access to the graph data. If we don't do this, the container will shut down and the data will not be able to be accessed.
+creepy-crawler uses neo4j graph database to store and display the site map. When the crawl is complete, the docker container is set to loop indefinitley to provide access to the graph data. If we don't do this, the container will shut down and the data will not be accessible
 
 ### Web interface
 View crawl data, stored in neo4j running inside of the container at: <code>http://\<docker_host\>:7474/webadmin</code>
