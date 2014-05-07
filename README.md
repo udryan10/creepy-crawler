@@ -63,7 +63,7 @@ examples located in <code>examples/</code> directory
 
 **Note:** If behind a proxy, export your proxy environment variables
    
-    export http_proxy=<prox_host>; export https_proxy=http_proxy=<prox_host>
+    export http_proxy=<proxy_host>; export https_proxy=<proxy_host>
 
 ###Docker
 For testing, I have included the ability to run the environment and a crawl inside of a [docker container](https://github.com/udryan10/creepy-crawler/blob/master/DOCKER.md)
