@@ -8,7 +8,7 @@ I have containerized creepy-crawler using [Docker](http://docker.io) for testing
 ####Clone
     git clone https://github.com/udryan10/creepy-crawler.git
 ####Build docker image
-    cd docker/ && docker build -t "creepy-crawler:1.0" .
+    cd creepy-crawler/docker/ && docker build -t "creepy-crawler:1.0" .
 ##Run
     # map neo4j's web interface port 7474 in the container to the host port 7474 for access
     docker run -i -p 7474:7474 creepy-crawler:1.0
