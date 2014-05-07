@@ -1,7 +1,7 @@
 creepy-crawler
 ==============
 
-Webcrawler that takes a url as input and will output a sitemap using neo4j graph database - Nothing creepy about it.
+Ruby web crawler that takes a url as input and produces a sitemap using a neo4j graph database - Nothing creepy about it.
 
 [![Build Status](https://travis-ci.org/udryan10/creepy-crawler.svg?branch=master)](https://travis-ci.org/udryan10/creepy-crawler)
 
