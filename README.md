@@ -65,6 +65,9 @@ examples located in <code>examples/</code> directory
    
     export http_proxy=<prox_host>; export https_proxy=http_proxy=<prox_host>
 
+###Docker
+For testing, I have included the ability to run the environment and a crawl inside of a [docker container](https://github.com/udryan10/creepy-crawler/blob/master/DOCKER.md)
+
 ##Output
 creepy-crawler uses [neo4j](http://www.neo4j.org/) graph database to store and display the site map.
 
