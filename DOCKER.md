@@ -12,6 +12,8 @@ I have containerized creepy-crawler using [Docker](http://docker.io) for testing
 ##Run
     # map neo4j's web interface port 7474 in the container to the host port 7474 for access
     docker run -i -p 7474:7474 creepy-crawler:1.0
+    
+It takes a bit of time for crawling information to be displayed to stdout when running in docker. Viewing the data in neo4j will display results immediatley.
 
 ##Output
 creepy-crawler uses neo4j graph database to store and display the site map. When the crawl is complete, the docker container is set to loop indefinitley to provide access to the graph data. If we don't do this, the container will shut down and the data will not be accessible
