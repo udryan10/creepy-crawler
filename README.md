@@ -8,7 +8,7 @@ Ruby web crawler that takes a url as input and produces a sitemap using a neo4j 
 
 ##Installation
 ####Clone
-    git clone https://github.com/udryan10/creepy-crawler.git
+    git clone https://github.com/udryan10/creepy-crawler.git && cd creepy-crawler
 ####Install Required Gems
     bundle install
 ####Install graph database
