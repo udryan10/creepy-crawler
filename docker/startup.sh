@@ -1,7 +1,7 @@
 #!/bin/sh 
 
 MAX_PAGE_CRAWL=50
-CRAWL_URL="http://www.yahoo.com"
+CRAWL_URL="https://www.digitalocean.com"
 echo "Crawler is set to crawl ${CRAWL_URL}"
 echo "Crawler is set to crawl ${MAX_PAGE_CRAWL} pages"
 
