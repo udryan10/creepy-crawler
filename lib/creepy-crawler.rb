@@ -42,6 +42,13 @@ end
 
 # allow the initiating of a crawl from command line 
 if __FILE__==$0
+
+  # Exit cleanly from an early interrupt
+  Signal.trap("INT") {
+    puts "Received interrupt. Stopping crawl"
+    exit 1
+  }
+
   # setup options
   opts = Trollop::options do
     opt :site, "Url of site to crawl", :type => :string  # flag --site
